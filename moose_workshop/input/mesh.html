@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+   
+      .remark-code {
+        font-size: 80%;
+      }
+      
+      .left-50 {
+        width: 49%;
+        float: left;
+      }
+      
+      .right-50 {
+        width: 49%;
+        float: right;
+      }
+      
+      .cover {
+        color: #ffffff;
+        padding-left: 250px;
+      }
+      
+      .small {
+        font-size: 10px;
+      }
+      
+      .left-75 {
+        width: 74%;
+        float: left;
+      }
+      
+      .right-25 {
+        width: 24%;
+        float: right;
+      }
+      
+      .left-66 {
+        width: 66%;
+        float: left;
+      }
+      
+      .right-33 {
+        width: 33%;
+        float: right;
+      }
+      
+      .left-33 {
+        width: 33%;
+        float: left;
+      }
+      
+      .right-66 {
+        width: 66%;
+        float: right;
+      }
+      
+      .left-40 {
+        width: 39%;
+        float: left;
+      }
+      
+      .right-60 {
+        width: 59%;
+        float: right;
+      }
+      
+      .left-60 {
+        width: 59%;
+        float: left;
+      }
+      
+      .right-40 {
+        width: 39%;
+        float: right;
+      }
+      
+      table, th, td {
+        padding: 10px;
+        border-spacing: 0px;
+        font-size: 95%
+      }
+      
+      table{
+        border-spacing: 0px;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+      }
+      
+      table.table-tight th, td{
+        padding: 1px;
+        border-spacing: 0px;
+        font-size: 85%
+      }
+      
+      th{
+        border-bottom: 1px solid black;
+      }
+      
+      .scroll {
+        overflow-y: scroll;
+        height: 500 px;
+        max-height: 500px;
+        display: block;
+      }
+      
+      figure {
+        display:table;
+        margin:14px;
+        padding:7px;
+        width:14px;
+      }
+      
+      /* Sets up the scrolbar to be always viewable */
+      ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0,0,0,.5);
+        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+name: mesh-title
+class: middle, cover
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_dark_title.png)
+
+# Mesh Block and Types
+
+
+---
+name: mesh-contents-0
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_white_slide.png)
+
+# Mesh Block and Types Contents
+<p style="line-height:15px;text-align:left;text-indent:0px;"><a href="#creating-a-mesh">Creating a Mesh</a><span style="float:right;"><a href="#creating-a-mesh">3</a></span></p>
+<p style="line-height:15px;text-align:left;text-indent:25px;"><a href="#filemesh">FileMesh</a><span style="float:right;"><a href="#filemesh">4</a></span></p>
+<p style="line-height:15px;text-align:left;text-indent:25px;"><a href="#generatedmesh">GeneratedMesh</a><span style="float:right;"><a href="#generatedmesh">5</a></span></p>
+<p style="line-height:15px;text-align:left;text-indent:0px;"><a href="#named-entity-support">Named Entity Support</a><span style="float:right;"><a href="#named-entity-support">6</a></span></p>
+<p style="line-height:15px;text-align:left;text-indent:0px;"><a href="#parallel-mesh">Parallel Mesh</a><span style="float:right;"><a href="#parallel-mesh">7</a></span></p>
+<p style="line-height:15px;text-align:left;text-indent:0px;"><a href="#displaced-mesh">Displaced Mesh</a><span style="float:right;"><a href="#displaced-mesh">8</a></span></p>
+
+
+---
+name: creating-a-mesh
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_white_slide.png)
+
+  # Creating a Mesh
+
+- For complicated geometries, we generally use CUBIT from Sandia National Laboratories.
+- CUBIT can be licensed from CSimSoft for a fee depending on the type of organization you work for.
+- Other mesh generators can work as long as they output a file format that libMesh reads (next slide).
+- If you have a specific mesh format that you like, we can take a look at adding support for it to libMesh.
+
+
+---
+name: filemesh
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_white_slide.png)
+
+
+
+## FileMesh
+
+- `FileMesh` is the default type when the “type” parameter is omitted from the section.
+- MOOSE supports reading and writing a large number of formats and could be extended to read more.
+
+| Extension   | Description                              |
+| :-          | :-                                       |
+| .dat        | Tecplot ASCII file                       |
+| .e, .exd    | Sandia’s ExodusII format                 |
+| .fro        | ACDL’s surface triangulation file        |
+| .gmv        | LANL’s GMV (General Mesh Viewer) format  |
+| .mat        | Matlab triangular ASCII file (read only) |
+| .msh        | GMSH ASCII file (write only)             |
+| .n, .nem    | Sandia’s Nemesis format                  |
+| .plt        | Tecplot binary file (write only)         |
+| .poly       | TetGen ASCII file (write only)           |
+| .inp        | Abaqus .inp format (read only)           |
+| .ucd        | AVS’s ASCII UCD format                   |
+| .unv        | I-deas Universal format                  |
+| .xda,  .xdr | libMesh formats                          |
+| .vtk        | Visualization Toolkit                    |
+
+
+---
+name: generatedmesh
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_white_slide.png)
+
+
+
+## GeneratedMesh
+
+- `type = GeneratedMesh`
+- Built-in mesh generation is implemented for lines, rectangles, and rectangular prisms (&quot;boxes&quot;) but could be extended.
+- The sides of a are named in a logical way (bottom, top, left, right, front, and back).
+- The length, width, and height of the domain, and the number of elements in each direction can be specified independently.
+
+
+---
+name: named-entity-support
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_white_slide.png)
+
+
+# Named Entity Support
+
+.left-50[
+
+- Human-readable names can be assigned to blocks, sidesets, and nodesets. These names will be automatically read in and can be used throughout the input file.
+    * This is typically done inside of Cubit.
+- Any parameter that takes entity IDs in the input file will accept either numbers or &quot;names&quot;.
+- Names can also be assigned to IDs on-the-fly in existing meshes to ease input file maintenance (see example).
+- On-the-fly names will also be written to Exodus/XDA/XDR files.
+
+]
+
+.right-50[
+
+```text
+[Mesh]
+  file = three_block.e
+
+  # These names will be applied on the
+  # fly to the mesh so that they can be
+  # used in the input file. In addition
+  # they will be written to the output
+  # file
+  block_id = &#39;1 2 3&#39;
+  block_name = &#39;wood steel copper&#39;
+
+  boundary_id = &#39;1 2&#39;
+  boundary_name = &#39;left right&#39;
+[]
+```
+
+]
+
+
+---
+name: parallel-mesh
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_white_slide.png)
+
+
+# Parallel Mesh
+
+- Useful when the mesh data structure dominates memory usage.
+- Only the pieces of the mesh &quot;owned&quot; by processor \(N\) are actually stored by processor \(N\).
+- If the mesh is too large to read in on a single processor, it can be split prior to the simulation.
+  * Copy the mesh to a large memory machine.
+  * Use a tool to split the mesh into `$ n $` pieces (SEACAS, loadbal).
+  * Copy the pieces to your working directory on the cluster.=
+  * Use the Nemesis reader to read the mesh using `$ n $` processors.
+- See in the directory for a working example.
+
+
+---
+name: displaced-mesh
+background-image: url(/Users/slauae/projects/moose/python/PresentationBuilder/backgrounds/inl_white_slide.png)
+
+
+# Displaced Mesh
+
+- Calculations can take place in either the initial mesh configuration or, when requested, the &quot;displaced&quot; configuration.
+* To enable displacements, provide a vector of displacement variable names for each spatial dimension in the section, e.g.:
+    ```text
+    displacements = &#39;disp_x disp_y disp_z&#39;
+    ```
+- Once enabled, the parameter can be set on individual MooseObjects which will enable them to use displaced coordinates during calculations:
+    ```cpp
+    template<>
+    InputParameters validParams<SomeKernel>()
+    {
+      InputParameters params = validParams<Kernel>();
+      params.set<bool>(&quot;use_displaced_mesh&quot;) = true;
+      return params;
+    }
+    ```
+    
+- This can also be set in the input file, but it is a good idea to do it in code if you have a pure Lagrangian formulation.
+
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+
+      // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          inlineMath: [['$','$'], ['\\(','\\)']]
+          }
+      });
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+  </body>
+</html>
