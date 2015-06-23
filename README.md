@@ -2,6 +2,7 @@
 
 ## Workshop Slides
 To build the workshop slides:
+
 1. Have a up-to-date copy of MOOSE
 2. Clone this repository in your projects directory
 3. Run the following:
