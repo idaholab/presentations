@@ -38,9 +38,9 @@ def workshop(**kwargs):
            'input/step08.i', # Postprocessors
            'input/step09.i', # Solid Mechanics
            'input/mooseapp.i',
+           'input/code_verification.i',
            'input/multiapps.i',
            'input/transfers.i',
-           'input/code_verification.i',
            'input/preconditioning.i',
            'input/debugging.i',
            'input/vis_tools.i',
