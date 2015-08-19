@@ -1,3 +1,9 @@
+# MOOSE Workshop
+moose_workshop/moose.i
+moose_workshop/*.html
+moose_workshop/input/*.html
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

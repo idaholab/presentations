@@ -23,39 +23,7 @@ def workshop(**kwargs):
 
   # List of input files to compile into a single presentation
   files = ['input/cover.i',
-           'input/overview.i',
-           'input/problem.i',
-           'input/problem_details.i',
-           'input/tutorial_summary.i',
-           'input/step01.i', # Mesh, Outputs, Coordinate systems
-           'input/fem.i',
            'input/step02.i', # MooseObject, validParams, MOOSE Types, Kernels
-           'input/step03.i', # Materials
-           'input/step04.i', # Aux Variables and Aux Kernels
-           'input/step05.i', # Executioners, TimeSteppers, BoundaryConditions
-           'input/step06.i', # Coupling, Functions
-           'input/step07.i', # Adaptivity
-           'input/step08.i', # Postprocessors
-           'input/step09.i', # Solid Mechanics
-           'input/mooseapp.i',
-           'input/code_verification.i',
-           'input/multiapps.i',
-           'input/transfers.i',
-           'input/preconditioning.i',
-           'input/debugging.i',
-           'input/vis_tools.i',
-           'input/testing.i',
-           'input/mesh_modifiers.i',
-           'input/oversampling.i',
-           'input/random.i',
-           'input/action.i',
-           'input/dirac.i',
-           'input/scalar_kernels.i',
-           'input/geom_search.i',
-           'input/dampers.i',
-           'input/dg.i',
-           'input/user_objects.i',
-           'input/restart.i'
            ]
 
 #           'input/ics.i',
