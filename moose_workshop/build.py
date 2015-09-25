@@ -37,10 +37,9 @@ def workshop(**kwargs):
            'input/step07.i', # Adaptivity
            'input/step08.i', # Postprocessors
            'input/step09.i', # Solid Mechanics
+           'input/step10.i', # MultiApps, Transfers, InitialConditions
            'input/mooseapp.i',
            'input/code_verification.i',
-           'input/multiapps.i',
-           'input/transfers.i',
            'input/preconditioning.i',
            'input/debugging.i',
            'input/vis_tools.i',
@@ -57,8 +56,6 @@ def workshop(**kwargs):
            'input/user_objects.i',
            'input/restart.i'
            ]
-
-#           'input/ics.i',
 
   # Create the presentation containing the entire moose workshop
   print utils.colorText('Building MOOSE Workshop', 'MAGENTA')
