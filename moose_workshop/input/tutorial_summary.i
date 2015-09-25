@@ -7,6 +7,7 @@
     slide_sets = 'step01_summary step02_summary step03_summary
                   step04_summary step05_summary step06_summary
                   step07_summary step08_summary step09_summary
+                  step10_summary
                   results_tease'
     title = 'Summary of Steps'
     contents = true
@@ -100,6 +101,16 @@
     auto_insert_moose_wiki = False
     hide_wiki_link = True
     active = 'mechanics-0'
+  [../]
+
+  [./step10_summary]
+    type = INLDjangoWikiSet
+    wiki = 'MooseTutorials/DarcyThermoMechanical/Step10'
+    use_wiki_title = False
+    use_wiki_title_for_heading = True
+    auto_insert_moose_wiki = False
+    hide_wiki_link = True
+    active = 'multiapps-0'
   [../]
 
   [./results_tease]
