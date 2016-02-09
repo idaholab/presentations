@@ -3,6 +3,10 @@ moose_workshop/moose.i
 moose_workshop/*.html
 moose_workshop/input/*.html
 
+# TMS Workshop
+moose_tms_2016/moose.i
+moose_tms_2016/*.html
+moose_tms_2016/input/*.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -59,6 +63,5 @@ docs/_build/
 # PyBuilder
 target/
 
-# Workshop
-*.html
-moose_workshop/moose.i
+# Temp. files
+*.~*~
