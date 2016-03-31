@@ -1,21 +1,14 @@
 #!/usr/bin/env python
 import os, sys, argparse
 
-# Determine the MOOSE Directory
-MOOSE_PYTHON_DIR = None
-if os.environ.has_key('MOOSE_DIR'):
-  MOOSE_PYTHON_DIR = os.path.join(os.environ['MOOSE_DIR'], 'python')
+# Load the blaster package
+BLASTER_DIR = os.path.abspath(os.path.join('..'))
+if os.path.exists(BLASTER_DIR):
+  sys.path.append(BLASTER_DIR)
 else:
-  MOOSE_PYTHON_DIR = os.path.join(os.environ['HOME'], 'projects', 'moose', 'python')
+  raise Exception('Unable to locate presentation blaster package in', BLASTER_DIR, ', not sure how you did this.')
 
-# Add moose/python to path
-if os.path.exists(MOOSE_PYTHON_DIR):
-  sys.path.append(MOOSE_PYTHON_DIR)
-else:
-  raise Exception('Unable to locate moose/python directory, please set MOOSE_DIR environment variable')
-
-# Requires ~/projects/moose/python to be added to PYTHONPATH
-from PresentationBuilder import base
+import blaster
 import utils
 
 # Function for building MOOSE workshop
@@ -61,14 +54,14 @@ def workshop(**kwargs):
 
   # Create the presentation containing the entire moose workshop
   print utils.colorText('Building MOOSE Workshop', 'MAGENTA')
-  merger = base.PresentationMerger('moose.i', files, style='inl', title='MOOSE Workshop',
-                                   format=kwargs.pop('format','remark'))
+  merger = blaster.base.PresentationMerger('moose.i', files, style='inl', title='MOOSE Workshop',
+                                           format=kwargs.pop('format','remark'))
   merger.write()
 
 # Function for building C++ slides
 def cpp(**kwargs):
   print utils.colorText('Building C++ Presentation', 'MAGENTA')
-  builder = base.PresentationBuilder('cpp.i', format=kwargs.pop('format','remark'))
+  builder = blaster.base.PresentationBuilder('cpp.i', format=kwargs.pop('format','remark'))
   builder.write()
 
 
