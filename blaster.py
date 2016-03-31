@@ -2,22 +2,27 @@
 import os, sys
 import argparse
 
-# Determine the MOOSE Directory
-MOOSE_PYTHON_DIR = None
+# Add the MOOSE python directory to the path
 if os.environ.has_key('MOOSE_DIR'):
   MOOSE_PYTHON_DIR = os.path.join(os.environ['MOOSE_DIR'], 'python')
 else:
   MOOSE_PYTHON_DIR = os.path.join(os.environ['HOME'], 'projects', 'moose', 'python')
 
-# Add moose/python to path
 if os.path.exists(MOOSE_PYTHON_DIR):
   sys.path.append(MOOSE_PYTHON_DIR)
 else:
-  raise Exception('Unable to locate moose/python directory, please set MOOSE_DIR environment variable')
+  raise Exception('Unable to locate moose/python directory, please set MOOSE_DIR environment variable.')
+
+# Load the blaster package
+BLASTER_DIR = os.path.abspath(os.path.join('..'))
+if os.path.exists(BLASTER_DIR):
+  sys.path.append(BLASTER_DIR)
+else:
+  raise Exception('Unable to locate presentation blaster package in', BLASTER_DIR, ', not sure how you did this.')
 
 # Load the required moose/python packages
 from FactorySystem import ParseGetPot
-from PresentationBuilder import base
+import blaster
 
 if __name__ == '__main__':
 
@@ -28,5 +33,5 @@ if __name__ == '__main__':
   args = parser.parse_args()
 
   # Build the presentation
-  builder = base.PresentationBuilder(args.input, format=args.format)
+  builder = blaster.base.PresentationBuilder(args.input, format=args.format)
   builder.write()
