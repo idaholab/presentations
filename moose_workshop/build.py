@@ -65,14 +65,14 @@ def workshop(**kwargs):
 
   # Create the presentation containing the entire moose workshop
   print utils.colorText('Building MOOSE Workshop', 'MAGENTA')
-  merger = base.PresentationMerger('moose.i', files, style='inl', title='MOOSE Workshop',
+  merger = blaster.base.PresentationMerger('moose.i', files, style='inl', title='MOOSE Workshop',
                                    format=kwargs.pop('format','remark'))
   merger.write()
 
 # Function for building C++ slides
 def cpp(**kwargs):
   print utils.colorText('Building C++ Presentation', 'MAGENTA')
-  builder = base.PresentationBuilder('cpp.i', format=kwargs.pop('format','remark'))
+  builder = blaster.base.PresentationBuilder('cpp.i', format=kwargs.pop('format','remark'))
   builder.write()
 
 
