@@ -27,9 +27,10 @@ def workshop(**kwargs):
            'input/problem.i',
            'input/problem_details.i',
            'input/tutorial_summary.i',
-           'input/step01.i', # Mesh, Outputs, Coordinate systems
+           'input/step01.i',
            'input/fem.i',
-           'input/step02.i', # MooseObject, validParams, MOOSE Types, Kernels
+           'input/step02.i', # Mesh, Outputs, MooseObject, validParams, MOOSE Types, Kernels
+           'input/laplace_young.i',
            'input/step03.i', # Materials
            'input/step04.i', # Aux Variables and Aux Kernels
            'input/step05.i', # Executioners, TimeSteppers, BoundaryConditions
@@ -54,7 +55,8 @@ def workshop(**kwargs):
            'input/dampers.i',
            'input/dg.i',
            'input/user_objects.i',
-           'input/restart.i'
+           'input/restart.i',
+           'input/controls.i'
            ]
 
   # Create the presentation containing the entire moose workshop

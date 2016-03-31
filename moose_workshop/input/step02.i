@@ -9,6 +9,6 @@
     insert_wiki_link = False
     use_wiki_title_for_heading = True
     contents_items_per_slide = 14
-    inactive = 'adding-a-custom-kernel look-at-example-2 time-derivative full-block-syntax common-output-parameters output-execution-toggles advanced-output-execution mesh-displacements in-block-output-control non-linear/linear-residual-output creating-custom-output-object creating-a-basicoutput creating-an-advancedoutput'
+    inactive = 'adding-a-custom-kernel look-at-example-2 time-derivative full-block-syntax common-output-parameters output-execution-toggles advanced-output-execution mesh-displacements in-block-output-control non-linear/linear-residual-output creating-custom-output-object creating-a-basicoutput creating-an-advancedoutput parallel-mesh'
   [../]
 []

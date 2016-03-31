@@ -10,7 +10,7 @@
     contents_title = 'Step 1 Contents'
     insert_wiki_link = False
     use_wiki_title_for_heading = True
-    inactive = 'advanced-output-execution residual-output creating-custom-output basicoutput advancedoutput common output-names postprocessors'
+    inactive = 'advanced-output-execution residual-output creating-custom-output basicoutput advancedoutput common output-names postprocessors parallel-mesh'
     [./Images]
       [./177]
         show_caption = false
