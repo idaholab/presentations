@@ -169,38 +169,44 @@ class DjangoWikiSet(RemarkSlideSet):
     url = urllib.urlopen(page)
     wiki = url.read()
 
-    # Read the image information
-    url = urllib.urlopen(os.path.join(page, '_plugin/images'))
-    raw = url.read()
+    # Look at two pages
+    for i in range(10):
 
-    # Extract wiki image ids
-    ids = []
-    pattern = re.compile(r'\[image:([0-9]*)(.*?)\]')
-    for m in pattern.finditer(raw):
-      ids.append(m.group(1))
+        # Read the image information
+        try:
+            url = urllib.urlopen(os.path.join(page, '_plugin/images/?page=' + str(i)))
+            raw = url.read()
+        except:
+            break
 
-    # Extract file names and url to image
-    names = []
-    links = []
-    pattern = re.compile(r'alt="(.*?)"')
-    for m in pattern.finditer(raw):
-      name = m.group(1)
-      if name not in names:
-        # Locate image URL
-        regex = 'href=\"(/static/media/wiki/images/' + '.*' + name + ')">.*'
-        match = re.search(regex, wiki)
-        link = None # case when image is not used
-        if match:
-          link = urlparse.urljoin(self.__url, match.group(1))
+        # Extract wiki image ids
+        ids = []
+        pattern = re.compile(r'\[image:([0-9]*)(.*?)\]')
+        for m in pattern.finditer(raw):
+            ids.append(m.group(1))
 
-        # Update the name, link lists
-        names.append(name)
-        links.append(link)
+        # Extract file names and url to image
+        names = []
+        links = []
+        pattern = re.compile(r'alt="(.*?)"')
+        for m in pattern.finditer(raw):
+            name = m.group(1)
+            if name not in names:
 
-    # Construct the image id to name,url map
-    for i in range(len(ids)):
-      self.images[ids[i]] = {'name' : names[i], 'url' : links[i], 'settings' : ''}
+                # Locate image URL
+                regex = 'href=\"(/static/media/wiki/images/' + '.*' + name + ')">.*'
+                match = re.search(regex, wiki)
+                link = None # case when image is not used
+                if match:
+                    link = urlparse.urljoin(self.__url, match.group(1))
 
+                # Update the name, link lists
+                names.append(name)
+                links.append(link)
+
+        # Construct the image id to name,url map
+        for i in range(len(ids)):
+            self.images[ids[i]] = {'name' : names[i], 'url' : links[i], 'settings' : ''}
 
   ##
   # A method for extracting html blocks (private)
