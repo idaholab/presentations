@@ -15,6 +15,7 @@ git clone https://github.com/idaholab/presentations.git
 ```
 cd ~/projects/presentations/moose_workshop
 ./build.py
-Open moose.html in your favorite browser.
 ```
+
+(4) Open moose.html in your favorite browser.
 (On OSX, you can just run 'open moose.html') to view the file.
