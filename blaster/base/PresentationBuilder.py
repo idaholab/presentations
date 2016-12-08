@@ -51,13 +51,13 @@ class PresentationBuilder(object):
     self.factory.loadPlugins('.', 'images', MooseObject)
 
     # Build the Parser object
-    self.parser = Parser(self.factory, self.warehouse)
+    self.parser = Parser(self.factory, self.warehouse, check_for_type=False)
 
     # Create SlideSet objects via the Parser object by parsing the input file
     print colorText('Parsing input...', 'CYAN')
     err = self.parser.parse(input_file)
     if err:
-      sys.exit()
+      sys.exit(err)
     print ''
 
     # Store the top-level 'presentation' level parameters
