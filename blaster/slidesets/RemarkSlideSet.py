@@ -22,7 +22,7 @@ class RemarkSlideSet(MooseObject):
     params.addParam('contents', False, 'Include table of contents slide')
     params.addParam('contents_title', 'The table-of-contents heading for this slide set')
     params.addParam('contents_level', 1, 'The heading level to include in the contents')
-    params.addParam('contents_items_per_slide', 15, 'The number of contents items to include on a page')
+    params.addParam('contents_items_per_slide', 13, 'The number of contents items to include on a page')
     params.addParam('show_in_contents', True, 'Toggle if slide set content appears in the table-of-contents')
     params.addParam('style', 'The CSS style sheet to utilize for this slide set')
     params.addParam('non_ascii_warn', True, 'Produce warning if non-ascii characters are located')
@@ -198,7 +198,7 @@ class RemarkSlideSet(MooseObject):
         continue
 
       # Build a tuple containing the table-of-contents information for this slide
-      pattern = re.compile(r'^\s*(#+)\s+(.*)', re.MULTILINE)
+      pattern = re.compile(r'^(#+)\s+(.*)\s*\n', flags=re.MULTILINE)
       for m in pattern.finditer(slide.markdown):
         contents.append((m.group(2).strip(), slide.name(), len(m.group(1)), slide.number))
 

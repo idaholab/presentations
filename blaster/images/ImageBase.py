@@ -13,7 +13,7 @@ class ImageBase(MooseObject):
     params.addParam('show_caption', True, 'Toggle the visibility of the caption')
     params.addParam('name', 'The image file name')
     params.addParam('url', 'The image file url')
-    params.addParam('download', True, 'Download the image locally')
+    params.addParam('download', False, 'Download the image locally')
     params.addPrivateParam('markdown') # The raw markdown source for this image
 
     params.addParam('div-center', True, 'Wrap html figure in centered div')
