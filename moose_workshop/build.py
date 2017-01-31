@@ -20,7 +20,7 @@ else:
   raise Exception('Unable to locate presentation blaster package in', BLASTER_DIR, ', not sure how you did this.')
 
 import blaster
-import utils
+import mooseutils
 
 # Function for building MOOSE workshop
 def workshop(**kwargs):
@@ -64,14 +64,14 @@ def workshop(**kwargs):
            ]
 
   # Create the presentation containing the entire moose workshop
-  print utils.colorText('Building MOOSE Workshop', 'MAGENTA')
+  print mooseutils.colorText('Building MOOSE Workshop', 'MAGENTA')
   merger = blaster.base.PresentationMerger('moose.i', files, style='inl', title='MOOSE Workshop',
                                    format=kwargs.pop('format','remark'))
   merger.write()
 
 # Function for building C++ slides
 def cpp(**kwargs):
-  print utils.colorText('Building C++ Presentation', 'MAGENTA')
+  print mooseutils.colorText('Building C++ Presentation', 'MAGENTA')
   builder = blaster.base.PresentationBuilder('cpp.i', format=kwargs.pop('format','remark'))
   builder.write()
 

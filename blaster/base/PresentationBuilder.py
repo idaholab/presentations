@@ -3,7 +3,7 @@ import sys, os, inspect, re
 from collections import OrderedDict
 
 from FactorySystem import *
-from utils import colorText
+from mooseutils import colorText
 from ..slidesets import *
 from ..slides import *
 

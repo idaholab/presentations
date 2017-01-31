@@ -1,7 +1,6 @@
 # Python packages
-import os, re, inspect, string, urllib2, sys
-from FactorySystem import InputParameters, MooseObject
-from utils import colorText
+import os, re, inspect, urllib2
+from FactorySystem import MooseObject
 from ..images import *
 from ..tools import *
 

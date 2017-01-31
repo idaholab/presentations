@@ -1,7 +1,5 @@
 import os, re, urllib, urlparse
 from ..slidesets import RemarkSlideSet
-from FactorySystem import InputParameters
-from utils import colorText
 
 ##
 # Class for reading django-wiki content
