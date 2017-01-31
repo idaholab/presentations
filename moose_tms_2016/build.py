@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os, sys, argparse
+import os, sys
 
 # Determine the MOOSE Directory
 MOOSE_PYTHON_DIR = None
@@ -16,7 +16,7 @@ else:
 
 # Requires ~/projects/moose/python to be added to PYTHONPATH
 from PresentationBuilder import base
-import utils
+import mooseutils
 
 # Function for building MOOSE workshop
 def workshop():
@@ -66,7 +66,7 @@ def workshop():
            ]
 
   # Create the presentation containing the entire moose workshop
-  print utils.colorText('Building MOOSE Workshop', 'MAGENTA')
+  print mooseutils.colorText('Building MOOSE Workshop', 'MAGENTA')
   merger = base.PresentationMerger('moose.i', files, style='inl', title="TMS2016 MOOSE/Phase-field Workshop")
   merger.write()
 

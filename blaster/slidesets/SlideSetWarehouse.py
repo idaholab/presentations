@@ -1,6 +1,6 @@
-import sys, re, sys
+import re
 from FactorySystem import Warehouse
-from utils import colorText
+from mooseutils import colorText
 
 
 ##
@@ -71,7 +71,6 @@ class SlideSetWarehouse(Warehouse):
 
     # Initial slide index
     idx = 1
-    title_slides = []
 
     # Loop through each object and slide and set the slide index
     print colorText('\nGenerating contents:', 'CYAN')

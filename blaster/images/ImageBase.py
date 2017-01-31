@@ -1,6 +1,6 @@
 import urllib, re
 from FactorySystem import MooseObject
-import utils
+import mooseutils
 
 ##
 # Base class for markdown image maniuplation
@@ -71,7 +71,7 @@ class ImageBase(MooseObject):
     # Flag for wrapping in div
     div = self.getParam('div-center')
     if isinstance(div, str):
-      div = utils.str2bool(div)
+      div = mooseutils.str2bool(div)
 
     # Create the html <img> block
     img = '\n\n'
