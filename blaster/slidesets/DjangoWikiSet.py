@@ -167,8 +167,8 @@ class DjangoWikiSet(RemarkSlideSet):
     url = urllib.urlopen(page)
     wiki = url.read()
 
-    # Look at two pages
-    for i in range(10):
+    # Look at multiple pages. Start at 1 because 0 isn't a valid page
+    for i in range(1, 10):
 
         # Read the image information
         try:
