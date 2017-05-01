@@ -192,7 +192,7 @@ class DjangoWikiSet(RemarkSlideSet):
             if name not in names:
 
                 # Locate image URL
-                regex = 'href=\"(/static/media/wiki/images/' + '.*' + name + ')">.*'
+                regex = 'href=\"(/static/media/wiki/images/' + '.*' + re.escape(name) + ')">.*'
                 match = re.search(regex, wiki)
                 link = None # case when image is not used
                 if match:
