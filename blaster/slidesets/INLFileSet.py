@@ -1,4 +1,5 @@
-from ..slidesets import FileSet, INLSetInterface
+from FileSet import FileSet
+from INLSetInterface import INLSetInterface
 
 ##
 # A basic class for reading Remark markdown files directly

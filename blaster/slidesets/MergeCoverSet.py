@@ -1,6 +1,4 @@
-# Import the SlideSet base class
-import math
-from ..slidesets import RemarkSlideSet
+from RemarkSlideSet import RemarkSlideSet
 
 ##
 # A special set of slides for creating cover page and contents

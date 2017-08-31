@@ -1,14 +1,14 @@
 import urllib, re
-from FactorySystem import MooseObject
+from blaster.base.PresentationObject import PresentationObject
 import mooseutils
 
 ##
 # Base class for markdown image maniuplation
-class ImageBase(MooseObject):
+class ImageBase(PresentationObject):
 
   @staticmethod
   def validParams():
-    params = MooseObject.validParams()
+    params = PresentationObject.validParams()
     params.addParam('caption', 'The image caption')
     params.addParam('show_caption', True, 'Toggle the visibility of the caption')
     params.addParam('name', 'The image file name')
@@ -31,7 +31,7 @@ class ImageBase(MooseObject):
   ##
   # Constructor
   def __init__(self, name, params):
-    MooseObject.__init__(self, name, params)
+    PresentationObject.__init__(self, name, params)
     self.parent = self.getParam('_parent')
 
     # Set download flag (default is true)

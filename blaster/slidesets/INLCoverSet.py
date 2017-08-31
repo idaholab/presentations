@@ -1,6 +1,6 @@
 # Import the SlideSet base class
-import math
-from ..slidesets import CoverSet, INLSetInterface
+from CoverSet import CoverSet
+from INLSetInterface import INLSetInterface
 
 ##
 # A special set of slides for creating cover page and contents in INL presentation format

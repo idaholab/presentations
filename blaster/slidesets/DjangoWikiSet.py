@@ -1,5 +1,5 @@
 import os, re, urllib, urlparse
-from ..slidesets import RemarkSlideSet
+from RemarkSlideSet import RemarkSlideSet
 
 ##
 # Class for reading django-wiki content

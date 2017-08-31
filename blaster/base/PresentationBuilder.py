@@ -2,10 +2,9 @@ import sys, os, inspect, re
 
 from collections import OrderedDict
 
-from FactorySystem import *
+from FactorySystem import Factory, Parser
 from mooseutils import colorText
-from ..slidesets import *
-from ..slides import *
+from blaster.slidesets import SlideSetWarehouse
 
 ##
 # Class for generating complete slide shows from markdown syntax
@@ -45,10 +44,11 @@ class PresentationBuilder(object):
     self._input_file = input_file
     self._output_file = f + '.html'
 
+    blaster_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     # Register the objects to be created
-    self.factory.loadPlugins('.', 'slidesets', MooseObject)
-    self.factory.loadPlugins('.', 'slides', MooseObject)
-    self.factory.loadPlugins('.', 'images', MooseObject)
+    self.factory.loadPlugins([blaster_dir], 'slidesets', "IS_PRESENTATION")
+    self.factory.loadPlugins([blaster_dir], 'slides', "IS_PRESENTATION")
+    self.factory.loadPlugins([blaster_dir], 'images', "IS_PRESENTATION")
 
     # Build the Parser object
     self.parser = Parser(self.factory, self.warehouse, check_for_type=False)

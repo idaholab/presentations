@@ -1,6 +1,5 @@
-# Import the SlideSet base class
-import math
-from ..slidesets import MergeCoverSet, INLSetInterface
+from MergeCoverSet import MergeCoverSet
+from INLSetInterface import INLSetInterface
 
 ##
 # A special set of slides for creating cover page and contents
