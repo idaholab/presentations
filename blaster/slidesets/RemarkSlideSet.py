@@ -1,20 +1,17 @@
 # Load python packages
-import re, sys, math
-from collections import OrderedDict
-
-# Load Moose packages
-from FactorySystem import MooseObject
-from ..slides import RemarkSlide, SlideWarehouse
+import re
+from blaster.base.PresentationObject import PresentationObject
+from blaster.slides import RemarkSlide, SlideWarehouse
 
 ##
 # Base class for markdown slide generation
-class RemarkSlideSet(MooseObject):
+class RemarkSlideSet(PresentationObject):
 
   ##
   # Defines the available properties for the SlideSet base class
   @staticmethod
   def validParams():
-    params = MooseObject.validParams()
+    params = PresentationObject.validParams()
     params.addRequiredParam('type', 'The type of slide set to create')
     params.addParam('title', 'The title of the slide set, if this exists a title slide will be injected')
     params.addParam('active', [], 'A list of ordered slide names to output, if blank all slides are output')
@@ -46,7 +43,7 @@ class RemarkSlideSet(MooseObject):
   #   slide_type = <str>
   #   The name of the Slide class to build, by default 'Slide' is used
   def __init__(self, name, params, **kwargs):
-    MooseObject.__init__(self, name, params)
+    PresentationObject.__init__(self, name, params)
 
     # Set the Slide type
     self.__slide_type = kwargs.pop('slide_type', 'RemarkSlide')
@@ -268,7 +265,6 @@ class RemarkSlideSet(MooseObject):
     contents = self._extractContents()
 
     # Build the table-of-contents entries
-    max_per_slide = int(self.getParam('contents_items_per_slide'))
     lvl = int(self.getParam('contents_level'))
     for i in range(len(contents)):
       output = ''

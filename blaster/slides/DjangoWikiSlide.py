@@ -1,6 +1,5 @@
-import os, re, urllib
-from ..images import DjangoWikiImage
-from ..slides import RemarkSlide
+import re
+from RemarkSlide import RemarkSlide
 
 ##
 # A slide for wiki content from a Djanjo Wiki (https://github.com/django-wiki/django-wiki)

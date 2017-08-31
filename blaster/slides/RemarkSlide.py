@@ -1,16 +1,15 @@
 # Python packages
 import os, re, inspect, urllib2
-from FactorySystem import MooseObject
-from ..images import *
-from ..tools import *
+from blaster.base.PresentationObject import PresentationObject
+from blaster import tools
 
 ##
 # Base class for individual Remark markdown slide content
-class RemarkSlide(MooseObject):
+class RemarkSlide(PresentationObject):
 
   @staticmethod
   def validParams():
-    params = MooseObject.validParams()
+    params = PresentationObject.validParams()
     params.addParam('class', 'The class property for RemarkJS CSS content')
     params.addParam('name', 'The name of the slide')
     params.addParam('background-image', 'The background image file name')
@@ -56,7 +55,7 @@ class RemarkSlide(MooseObject):
   #   This is a comment
   #
   def __init__(self, params, **kwargs):
-    MooseObject.__init__(self, params)
+    PresentationObject.__init__(self, params)
 
     # Set the Image type
     self.__image_type = kwargs.pop('image_type', 'MarkdownImage')
@@ -265,7 +264,7 @@ class RemarkSlide(MooseObject):
     if len(match.groups()) == 5:
       strip = match.group(5)
       if strip in code:
-        code = stripCode(code, ext, strip)
+        code = tools.stripCode(code, ext, strip)
 
     # Initialize the output string
     block = ''
@@ -305,7 +304,7 @@ class RemarkSlide(MooseObject):
       self.__parser.extractParams('', parent_params, images_node)
 
     # Build the image objects
-    image_class = globals()[self.__image_type]
+    image_class = self.__factory.objects[self.__image_type]
     for match in image_class.match(markdown):
 
       # Get the default parameters from the image being created

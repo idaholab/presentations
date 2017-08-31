@@ -1,5 +1,5 @@
-import os, re
-from ..images import ImageBase
+import re
+from ImageBase import ImageBase
 
 ##
 # Image class for standard markdown image blocks

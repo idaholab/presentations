@@ -1,5 +1,5 @@
-import re, urllib
-from ..images import ImageBase
+import re
+from ImageBase import ImageBase
 
 ##
 # Image class for DjangoWikiSlide class

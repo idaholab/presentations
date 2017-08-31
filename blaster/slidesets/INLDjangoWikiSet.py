@@ -1,5 +1,5 @@
-import os, re, urllib, urlparse
-from ..slidesets import DjangoWikiSet, INLSetInterface
+from DjangoWikiSet import DjangoWikiSet
+from INLSetInterface import INLSetInterface
 
 ##
 # A Django wiki set of slids formated in INL presentation style
