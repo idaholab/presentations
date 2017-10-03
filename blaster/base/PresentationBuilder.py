@@ -61,7 +61,12 @@ class PresentationBuilder(object):
     print ''
 
     # Store the top-level 'presentation' level parameters
-    self._params = self.parser.root.children["presentation"].params
+
+    pres = self.parser.root.find('presentation')
+    self._params = {}
+    if pres is not None:
+        for child in pres.children():
+            self._params[child.path()] = child.param()
 
     # Extract CSS style
     self._style()
