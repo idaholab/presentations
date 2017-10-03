@@ -296,7 +296,7 @@ class RemarkSlide(PresentationObject):
     # Apply the [./Slides] block
     images_node = None
     if self.__root:
-      images_node = self.__root.getNode(self.parent.name()).getNode('Images')
+      images_node = self.__root.find(os.path.join(self.parent.name(), 'Images'))
 
     # Get the common parameters from the ./Images block
     parent_params = self.__factory.validParams(self.__image_type)

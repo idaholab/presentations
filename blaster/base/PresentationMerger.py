@@ -26,7 +26,7 @@ class PresentationMerger(PresentationBuilder):
     fid.write('  style = ' + style + '\n')
 
     if (title != None):
-        fid.write('  title = ' + title + '\n')
+        fid.write('  title = "' + title + '"\n')
 
     # Add the blocks from the various input files
     for f in files:

@@ -1,5 +1,5 @@
 # Load python packages
-import re
+import re, os
 from blaster.base.PresentationObject import PresentationObject
 from blaster.slides import RemarkSlide, SlideWarehouse
 
@@ -156,12 +156,10 @@ class RemarkSlideSet(PresentationObject):
 
     # Apply the [./Slides] block
     if self.__root:
-      node = self.__root.getNode(self.name()).getNode('Slides')
+      node = self.__root.find(os.path.join(self.name(), 'Slides', slide.name()))
       if node:
-        node = node.getNode(slide.name())
-        if node:
-          print ' '*6 + 'Apply settings from input file'
-          self.__parser.extractParams('', slide.parameters(), node)
+        print ' '*6 + 'Apply settings from input file'
+        self.__parser.extractParams('', slide.parameters(), node)
 
     # Parse the raw markdown and store it in the slide
     self._parseSlide(slide, raw)
