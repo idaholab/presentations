@@ -163,7 +163,7 @@ class PresentationBuilder(object):
       output += ' '*6 +  key + ' { ' + value + ' }\n\n'
 
     # Look for the CSS block in the input file, do nothing if it is not found
-    node = self.parser.root.getNode('CSS')
+    node = self.parser.root.find('CSS')
     if node:
 
       # Write the custom CSS code

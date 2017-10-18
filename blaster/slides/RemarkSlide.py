@@ -341,7 +341,7 @@ class RemarkSlide(PresentationObject):
 
       # Apply the [./Slides] block parameters
       if images_node:
-        node = images_node.getNode(name)
+        node = images_node.find(name)
         if node:
 
           # Apply the parameters from the node
