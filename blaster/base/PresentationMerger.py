@@ -1,8 +1,6 @@
 #!/usr/bin/python
-import os, sys
-
 from ..base import PresentationBuilder
-from FactorySystem import ParseGetPot
+from FactorySystem.ParseGetPot import ParseGetPot
 
 ##
 # A class for merging presentation files into a single input file

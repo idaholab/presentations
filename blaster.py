@@ -21,7 +21,6 @@ else:
   raise Exception('Unable to locate presentation blaster package in', BLASTER_DIR, ', not sure how you did this.')
 
 # Load the required moose/python packages
-from FactorySystem import ParseGetPot
 import blaster
 
 if __name__ == '__main__':

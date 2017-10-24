@@ -1,5 +1,4 @@
 import re
-from FactorySystem import ParseGetPot
 
 ##
 # A function for stripping C++ functions from .C files
