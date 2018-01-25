@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from ..base import PresentationBuilder
-from FactorySystem.ParseGetPot import ParseGetPot
+import hit
 
 ##
 # A class for merging presentation files into a single input file
@@ -28,10 +28,11 @@ class PresentationMerger(PresentationBuilder):
 
     # Add the blocks from the various input files
     for f in files:
-      root = ParseGetPot(f).root_node.children['presentation']
-      for child in root.children_list:
-        node = root.children[child]
-        fid.write(node.createString(1) + '\n')
+      with open(f, "r") as input_file:
+        root = hit.parse(f, input_file.read())
+      presentation = root.find("presentation")
+      for child in presentation.children(node_type=hit.NodeType.Section):
+        fid.write(child.render(1) + '\n')
 
     # Close the block and file
     fid.write('[]\n')
