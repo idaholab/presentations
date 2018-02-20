@@ -5,6 +5,8 @@ from collections import OrderedDict
 from FactorySystem import Factory, Parser
 from mooseutils import colorText
 from blaster.slidesets import SlideSetWarehouse
+import hit
+from mooseutils import HitNode
 
 ##
 # Class for generating complete slide shows from markdown syntax
@@ -55,7 +57,8 @@ class PresentationBuilder(object):
 
     # Create SlideSet objects via the Parser object by parsing the input file
     print colorText('Parsing input...', 'CYAN')
-    err = self.parser.parse(input_file)
+    default_params = HitNode(hitnode=hit.parse('',''))
+    err = self.parser.parse(input_file, default_params)
     if err:
       sys.exit(err)
     print ''
