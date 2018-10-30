@@ -49,6 +49,7 @@ def workshop(**kwargs):
            'input/debugging.i',
           # 'input/vis_tools.i', # We don't really need this, we talk about all of this throughout
            'input/testing.i',
+           'input/ad_kernels.i',
            'input/mesh_modifiers.i',
            'input/oversampling.i',
            'input/random.i',
